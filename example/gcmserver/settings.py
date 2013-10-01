@@ -147,6 +147,7 @@ INSTALLED_APPS = (
 
     # external
     'tastypie',
+    'rest_framework',
     'gcm',
 
     # This application shows how to easily extend
