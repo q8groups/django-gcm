@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 
-from gcm.api import send_gcm_message
+from .api import send_gcm_message
 
 
 class Device(models.Model):

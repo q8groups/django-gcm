@@ -4,8 +4,8 @@ from tastypie.authorization import Authorization
 from tastypie.resources import Resource
 from tastypie.serializers import Serializer
 from django.conf.urls import url
-from gcm.forms import DeviceForm
-from gcm.models import Device
+from .forms import DeviceForm
+from .models import Device
 
 
 class DeviceResource(Resource):

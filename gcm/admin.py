@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
-from gcm.models import Device
+from .models import Device
 
 
 class DeviceAdmin(admin.ModelAdmin):

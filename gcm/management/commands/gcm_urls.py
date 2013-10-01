@@ -1,5 +1,6 @@
 from django.core.management.base import NoArgsCommand
 from django.core.urlresolvers import reverse
+from django.conf import settings
 
 
 class Command(NoArgsCommand):
@@ -9,8 +10,14 @@ class Command(NoArgsCommand):
         self.stdout.write("%s\n" % ("-" * 30))
 
     def handle_noargs(self, **options):
-        register_url = reverse("register-device", kwargs={'resource_name': 'device', 'api_name': 'v1'})
-        unregister_url = reverse("unregister-device", kwargs={'resource_name': 'device', 'api_name': 'v1'})
+        if(settings.INSTALLED_APPS.count('tastypie')>0):
+            register_url = reverse("register-device", kwargs={'resource_name': 'device', 'api_name': 'v1'})
+            unregister_url = reverse("unregister-device", kwargs={'resource_name': 'device', 'api_name': 'v1'})
+        if(settings.INSTALLED_APPS.count('rest_framework')>0):
+            register_url = reverse("register-device", kwargs={})
+            unregister_url = reverse("unregister-device", kwargs={})
+
+
 
         self.show_line()
         self.stdout.write("GCM urls:\n")

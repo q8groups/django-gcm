@@ -1,5 +1,5 @@
 from django import forms
-from gcm.models import Device
+from .models import Device
 
 
 class DeviceForm(forms.ModelForm):
