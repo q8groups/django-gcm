@@ -1,6 +1,9 @@
 from django.conf.urls import patterns, url, include
 from django.conf import settings
 urlpatterns = []
+"""
+if tastypie or django rest framework are installed, will be integrated directly
+"""
 if(settings.INSTALLED_APPS.count('tastypie')>0):
     from tastypie.api import Api
     from gcm.resources import DeviceResource

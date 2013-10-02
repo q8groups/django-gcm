@@ -3,6 +3,9 @@ from gcm.models import Device
 from tastypie.test import ResourceTestCase
 
 
+from rest_framework import status
+from rest_framework.test import APITestCase
+
 class DeviceResourceTest(ResourceTestCase):
 
     def setUp(self):
@@ -52,3 +55,18 @@ class DeviceResourceTest(ResourceTestCase):
 
         reg_id = Device.objects.get(pk=device.pk).reg_id
         self.assertEqual(reg_id, expected_registration_id)
+
+
+
+
+class AccountTests(APITestCase):
+    def test_create_account(self):
+        """
+        Ensure we can create a new account object.
+        """
+        url = reverse('register-device')
+        data = {'dev_id': '1234','reg_id':'5678'}
+        expected = {'dev_id': u'1234', 'reg_id': u'5678', 'is_active': True}
+        response = self.client.post(url, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(response.data, expected)
